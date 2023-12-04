@@ -1,0 +1,17 @@
+[
+{
+    "username": "Admin",
+    "password": "admin123",
+    "expected": "Cockpit"
+  },
+  {
+    "username": "xya",
+    "password": "asdf123",
+    "expected": "Invalid credentials"
+  },
+  {
+    "username": "User",
+    "password": "admin123",
+    "expected": "Invalid credentials"
+  }
+]
