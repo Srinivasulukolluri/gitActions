@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "sudo ./node_modules/.bin/cypress open   ",
-    "test": "npx cypres run tests"
+    "test": "npx cypres run tests",
+    "run:twotests":"npx cypress run  --browser chrome --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/secondtest.cy.js,/Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/thirdTest.cy.js --headless"
   },
   "author": "Srinivas",
   "license": "ISC",
