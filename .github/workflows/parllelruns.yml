@@ -33,6 +33,7 @@ jobs:
                           command: npm run run:twotests - two tests report
 
                     - name: Cypress repots
+                      if: always()
                       uses: actions/upload-artifact@v3
                       with:
                                name: mochawsome HTML report
