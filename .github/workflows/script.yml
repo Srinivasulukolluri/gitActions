@@ -1,4 +1,4 @@
-name: Regression End-to-end tests
+name: sanitybuild End-to-end tests
 on: push
 jobs:
   cypress-run:
@@ -11,4 +11,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-            command: run:twotests
+            command: npm run run:twotests
