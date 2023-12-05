@@ -16,5 +16,5 @@ jobs:
       - name: Cypress repots
         uses: actions/upload-artifact@v3
         with:
-         name: mochawsome report
+         name: mochawsome HTML report
          path: cypress/reports/html # or path/to/artifact 
