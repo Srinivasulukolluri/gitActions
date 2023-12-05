@@ -11,7 +11,13 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-            command: npm run run:twotests
+            command: npm run secondTest
+
+      - name: Cypress repots
+        uses: actions/upload-artifact@v3
+        with:
+             name: mochawsome HTML report - Secondtest report
+             path: cypress/reports/html/
          
            
   assertions-run:
@@ -24,7 +30,14 @@ jobs:
                     - name: Cypress run
                       uses: cypress-io/github-action@v6
                       with:
-                          command: npm run assertionTest
+                          command: npm run run:twotests - two tests report
+
+                    - name: Cypress repots
+                      uses: actions/upload-artifact@v3
+                      with:
+                               name: mochawsome HTML report
+                               path: cypress/reports/html/
+                  
 
             
             

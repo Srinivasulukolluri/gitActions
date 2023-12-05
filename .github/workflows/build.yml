@@ -17,4 +17,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
          name: mochawsome HTML report
-         path: cypress/reports/html # or path/to/artifact 
+         path: cypress/reports/html/
