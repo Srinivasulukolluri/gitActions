@@ -11,5 +11,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-            browser: chrome
-            command: npm run run:twotests
+            browser: firefox
+            #command: npm run run:twotests
