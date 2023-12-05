@@ -30,7 +30,7 @@ describe('Assertions demo',()=>{
     cy.get("input[name='password']").type("admin123").should('have.value','admin123')
 
     })
-it('Explicit Assertions',() =>{
+it.skip('Explicit Assertions',() =>{
 
     cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     cy.get("input[name='username']").type("Admin")

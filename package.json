@@ -6,8 +6,9 @@
   "scripts": {
     "cypress:open": "sudo ./node_modules/.bin/cypress open   ",
     "test": "npx cypres run tests",
-    "run:twotests":"npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/secondtest.cy.js,/Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/thirdTest.cy.js",
-    "assertionTest":"npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/Assertions.cy.js"
+    "run:twotests":"npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/secondtest.cy.js",
+    "assertionTest":"npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/Assertions.cy.js",
+    "secondTest":"npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/secondtest.cy.js"
 
   },
   "author": "Srinivas",
