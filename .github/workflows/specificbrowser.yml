@@ -12,4 +12,9 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
             browser: firefox
+      - name: Cypress repots
+        uses: actions/upload-artifact@v3
+        with:
+                 name: mochawsome HTML report - Secondtest report
+                 path: cypress/reports/html/
             #command: npm run run:twotests
