@@ -10,3 +10,9 @@ jobs:
       # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
+
+      - name: Cypress repots
+        uses: actions/upload-artifact@v3
+        with:
+         name: mochawsome report
+         path: cypress/reports/html # or path/to/artifact 
