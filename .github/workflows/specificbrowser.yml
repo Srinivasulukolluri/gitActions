@@ -1,4 +1,4 @@
-name: sanitybuild End-to-end tests
+name:  Diffrent Browsers Test
 on: push
 jobs:
   cypress-run:
