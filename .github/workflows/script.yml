@@ -1,4 +1,4 @@
-name: sanitybuild End-to-end tests
+name: sanitybuild Test
 on: push
 jobs:
   cypress-run:
