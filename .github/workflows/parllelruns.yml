@@ -17,7 +17,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
              name: mochawsome HTML report - Secondtest report
-             path: /Users/srinivasulukolluri/Documents/cypressActions/cypress/reports/html
+             path: /cypress/reports/html
          
            
   assertions-run:
@@ -37,7 +37,7 @@ jobs:
                       uses: actions/upload-artifact@v3
                       with:
                                name: mochawsome HTML report
-                               path: /Users/srinivasulukolluri/Documents/cypressActions/cypress/reports/html
+                               path: /cypress/reports/html
                   
 
             
