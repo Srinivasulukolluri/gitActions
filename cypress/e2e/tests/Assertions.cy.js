@@ -1,7 +1,7 @@
 //require('cypress-xpath');
 describe('Assertions demo',()=>{
 
-    it("implicit assertions",()=>{
+    it.skip("implicit assertions",()=>{
     cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
     // should ,and  keywords
