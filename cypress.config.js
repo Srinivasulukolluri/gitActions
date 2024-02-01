@@ -10,14 +10,20 @@ module.exports = defineConfig({
   //   embeddedScreenshots: true,
   //   inlineAssets: true,
   //   saveAllAttempts: false,
+  
   failOnStatusCode: false,
+  
   e2e: {
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on);
+
+      
       
       // implement node event listeners here
     },
+   
     
   },
+  
   
 });

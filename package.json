@@ -6,10 +6,11 @@
   "scripts": {
     "cypress:open": "sudo ./node_modules/.bin/cypress open   ",
     "test": "npx cypres run tests",
-    "run:twotests": "npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/secondtest.cy.js",
-    "assertionTest": "npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/Assertions.cy.js",
-    "secondTest": "npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/secondtest.cy.js",
-    "chrome":"cypress run --browser chrome"
+    "run:twotests": "npx cypress run --spec cypress/e2e/tests/secondtest.cy.js,cypress/e2e/tests/Assertions.cy.js,cypress/e2e/tests/fourthTest.cy.js,cypress/e2e/tests/thirdTest.cy.js --browser chrome",
+    "assertionTest": "npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/Assertions.cy.js --browser chrome",
+    "secondTest": "npx cypress run --spec /Users/srinivasulukolluri/Documents/cypressActions/cypress/e2e/tests/secondtest.cy.js --browser chrome",
+    "chrome":"cypress run --browser chrome",
+    "newTest":"npx cypress run --spec cypress/e2e/Branch_Tests/secondbrach.cy.js --browser chrome"
   },
   "author": "Srinivas",
   "license": "ISC",
