@@ -24,17 +24,14 @@ pipeline {
             steps {
                 script {
                     // Run build and test steps based on branch
-                    def branchSpecificBuild = [
-                        'main': ['npm install', 'npm run test'],
-                        'branch1': ['npm install', 'npm run run:twotests'],
-                        'branch2': ['npm install', 'npm run newTest']
-                        // Add more branches and build configurations as needed
-                    ]
-
-                    def branchCommands = branchSpecificBuild[env.BRANCH_NAME]
-                    if (branchCommands) {
-                        buildAndTest(env.BRANCH_NAME, branchCommands[0], branchCommands[1])
+                    if (env.BRANCH_NAME == 'main') {
+                        buildAndTest('main', 'npm install cypress', 'npm run test')
+                    } else if (env.BRANCH_NAME == 'branch1') {
+                        buildAndTest('branch1', 'npm install', 'npm run run:twotests')
+                    } else if (env.BRANCH_NAME == 'branch2') {
+                        buildAndTest('branch2', 'npm install', 'npm run newTest')
                     }
+                    // Add more branches and build configurations as needed
                 }
             }
         }
