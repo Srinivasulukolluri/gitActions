@@ -34,24 +34,24 @@ pipeline {
             // Add post-build actions or cleanup steps if needed
         }
     }
+}
 
-    // Function to define build and test steps
-    def buildAndTest(buildName, installCommand, testCommand) {
-        dir("path/to/${buildName}") {
-            // Change to the directory for the specific build
-            // Perform build steps
-            sh installCommand
-            // Run tests
-            sh testCommand
-        }
+// Function to define build and test steps
+def buildAndTest(buildName, installCommand, testCommand) {
+    dir("path/to/${buildName}") {
+        // Change to the directory for the specific build
+        // Perform build steps
+        sh installCommand
+        // Run tests
+        sh testCommand
     }
+}
 
-    // Function to publish MochaAwesome reports
-    def publishMochaAwesomeReports(reportPath) {
-        // Archive the reports so they can be accessed later
-        archiveArtifacts "${reportPath}/**/*"
+// Function to publish MochaAwesome reports
+def publishMochaAwesomeReports(reportPath) {
+    // Archive the reports so they can be accessed later
+    archiveArtifacts "${reportPath}/**/*"
 
-        // Publish HTML reports
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
-    }
+    // Publish HTML reports
+    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
 }
