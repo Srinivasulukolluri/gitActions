@@ -1,3 +1,14 @@
+// Function to define build and test steps
+def buildAndTest(buildName, installCommand, testCommand) {
+    dir("path/to/${buildName}") {
+        // Change to the directory for the specific build
+        // Perform build steps
+        sh installCommand
+        // Run tests
+        sh testCommand
+    }
+}
+
 pipeline {
     agent any
 
@@ -21,7 +32,7 @@ pipeline {
         stage('Publish MochaAwesome Reports') {
             steps {
                 script {
-                    publishMochaAwesomeReports('/Users/srinivasulukolluri/Documents/cypressActions/cypress/reports/html') // Adjust the path accordingly
+                    publishMochaAwesomeReports('/Users/srinivasulukolluri/Documents/cypressActions/cypress/reports/html/') // Adjust the path accordingly
                 }
             }
         }
@@ -29,17 +40,7 @@ pipeline {
         // Add more stages if necessary
     }
 
-
-
-// Function to define build and test steps
-def buildAndTest(buildName, installCommand, testCommand) {
-    dir("path/to/${buildName}") {
-        // Change to the directory for the specific build
-        // Perform build steps
-        sh installCommand
-        // Run tests
-        sh testCommand
-    }
+  
 }
 
 // Function to publish MochaAwesome reports
@@ -49,5 +50,4 @@ def publishMochaAwesomeReports(reportPath) {
 
     // Publish HTML reports
     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
-}
 }
