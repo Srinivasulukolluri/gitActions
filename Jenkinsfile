@@ -50,3 +50,4 @@ def publishMochaAwesomeReports(reportPath) {
     // Publish HTML reports
     publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
 }
+}
