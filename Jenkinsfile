@@ -10,8 +10,8 @@ def buildAndTest(buildName, installCommand, testCommand) {
             env.PATH = "${nodeJSHome}/bin:${env.PATH}"
 
             // Run installCommand (npm install) and testCommand (npm run ...)
-            sh installCommand
-            sh testCommand
+            sh "${installCommand}"
+            sh "${testCommand}"
         }
     }
 }
