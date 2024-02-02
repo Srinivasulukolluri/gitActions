@@ -29,12 +29,7 @@ pipeline {
         // Add more stages if necessary
     }
 
-    post {
-        always {
-            // Add post-build actions or cleanup steps if needed
-        }
-    }
-}
+
 
 // Function to define build and test steps
 def buildAndTest(buildName, installCommand, testCommand) {
