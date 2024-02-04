@@ -25,11 +25,11 @@ pipeline {
                 script {
                     // Run build and test steps based on branch
                     if (env.BRANCH_NAME == 'main') {
-                        buildAndTest('main', 'npm install cypress --save-dev', 'npm run test')
+                        buildAndTest('main', 'npm i', 'npm run test')
                     } else if (env.BRANCH_NAME == 'branch1') {
-                        buildAndTest('branch1', 'npm install cypress --save-dev', 'npm run run:twotests')
+                        buildAndTest('branch1', 'npm i', 'npm run run:twotests')
                     } else if (env.BRANCH_NAME == 'branch2') {
-                        buildAndTest('branch2', 'npm install cypress --save-dev', 'npm run newTest')
+                        buildAndTest('branch2', 'npm i', 'npm run newTest')
                     }
                     // Add more branches and build configurations as needed
                 }
