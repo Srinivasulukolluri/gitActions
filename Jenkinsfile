@@ -55,6 +55,6 @@ def publishMochaAwesomeReports(reportPath) {
         archiveArtifacts "${reportPath}/**/*"
 
         // Publish HTML reports
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: '.', reportFiles: 'index.html'])
     }
 }
