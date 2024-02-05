@@ -38,8 +38,8 @@ pipeline {
                     echo "Workspace contents:"
                     sh 'ls -R ${WORKSPACE}'
                     echo "Build directory contents:"
-                    sh 'ls -R ${WORKSPACE}/build'
-                    publishMochaAwesomeReports('build')
+                    sh 'ls -R ${WORKSPACE}/path/to/build'
+                    publishMochaAwesomeReports('path/to/build')
                 }
             }
         }
