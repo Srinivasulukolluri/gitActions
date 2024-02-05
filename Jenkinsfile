@@ -1,20 +1,17 @@
-// Function to define build and test steps
+/ Function to define build and test steps
 def buildAndTest(buildName, installCommand, testCommand) {
-    stage("Build and Test - ${buildName}") {
-        steps {
-            script {
-                // Ensure the Node.js installation is available
-                def nodeJSHome = tool 'NodeJS'
-                // Include Node.js binaries in the PATH
-                env.PATH = "${nodeJSHome}/bin:${env.PATH}"
+    dir("path/to/${buildName}") {
+        // Change to the directory for the specific build
+        // Perform build steps
+        script {
+            // Ensure the Node.js installation is available
+            def nodeJSHome = tool 'NodeJS'
+            // Include Node.js binaries in the PATH
+            env.PATH = "${nodeJSHome}/bin:${env.PATH}"
 
-                // Change to the directory for the specific build
-                dir("path/to/${buildName}") {
-                    // Run installCommand (npm install) and testCommand (npm run ...)
-                    sh "${installCommand}"
-                    sh "${testCommand}"
-                }
-            }
+            // Run installCommand (npm install) and testCommand (npm run ...)
+            sh "${installCommand}"
+            sh "${testCommand}"
         }
     }
 }
@@ -23,9 +20,21 @@ pipeline {
     agent any
 
     stages {
-        buildAndTest('main', 'npm ci', 'npm run test-main')
-        buildAndTest('feature1', 'npm ci', 'npm run test-feature1')
-        buildAndTest('feature2', 'npm ci', 'npm run test-feature2')
+        stage('Build and Test') {
+            steps {
+                script {
+                    // Run build and test steps based on branch
+                    if (env.BRANCH_NAME == 'main') {
+                        buildAndTest('main', 'npm i cypress', 'npm run test')
+                    } else if (env.BRANCH_NAME == 'branch1') {
+                        buildAndTest('branch1', 'npm i cypress', 'npm run run:twotests')
+                    } else if (env.BRANCH_NAME == 'branch2') {
+                        buildAndTest('branch2', 'npm i cypress', 'npm run newTest')
+                    }
+                    // Add more branches and build configurations as needed
+                }
+            }
+        }
 
         stage('Publish MochaAwesome Reports') {
             steps {
@@ -41,15 +50,11 @@ pipeline {
 
 // Function to publish MochaAwesome reports
 def publishMochaAwesomeReports(reportPath) {
-    stage('Publish MochaAwesome Reports') {
-        steps {
-            script {
-                // Archive the reports so they can be accessed later
-                archiveArtifacts "${reportPath}/**/*"
+    script {
+        // Archive the reports so they can be accessed later
+        archiveArtifacts "${reportPath}/**/*"
 
-                // Publish HTML reports
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
-            }
-        }
+        // Publish HTML reports
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
     }
 }
