@@ -1,8 +1,6 @@
 // Function to define build and test steps
 def buildAndTest(buildName, installCommand, testCommand) {
     dir("path/to/${buildName}") {
-        // Change to the directory for the specific build
-        // Perform build steps
         script {
             // Ensure the Node.js installation is available
             def nodeJSHome = tool 'NodeJS'
@@ -25,11 +23,11 @@ pipeline {
                 script {
                     // Run build and test steps based on branch
                     if (env.BRANCH_NAME == 'main') {
-                        buildAndTest('main', 'npm i cypress', 'npm run test')
+                        buildAndTest('main', 'npm install cypress', 'npm run test')
                     } else if (env.BRANCH_NAME == 'branch1') {
-                        buildAndTest('branch1', 'npm i cypress', 'npm run run:twotests')
+                        buildAndTest('branch1', 'npm install', 'npm run run:twotests')
                     } else if (env.BRANCH_NAME == 'branch2') {
-                        buildAndTest('branch2', 'npm i cypress', 'npm run newTest')
+                        buildAndTest('branch2', 'npm install', 'npm run newTest')
                     }
                     // Add more branches and build configurations as needed
                 }
@@ -39,7 +37,7 @@ pipeline {
         stage('Publish MochaAwesome Reports') {
             steps {
                 script {
-                    publishMochaAwesomeReports('cypress/reports/html/**/*') // Adjust the path accordingly
+                    publishMochaAwesomeReports('/Users/srinivasulukolluri/Documents/cypressActions/cypress/reports/html/') // Adjust the path accordingly
                 }
             }
         }
@@ -55,6 +53,6 @@ def publishMochaAwesomeReports(reportPath) {
         archiveArtifacts "${reportPath}/**/*"
 
         // Publish HTML reports
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: '.', reportFiles: 'index.html'])
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
     }
 }
