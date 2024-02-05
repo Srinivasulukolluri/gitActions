@@ -1,15 +1,13 @@
 // Function to define build and test steps
-def buildAndTest(buildName, installCommand, testCommand) {
-    dir("path/to/${buildName}") {
-        // Ensure the Node.js installation is available
-        def nodeJSHome = tool 'NodeJS'
-        // Include Node.js binaries in the PATH
-        env.PATH = "${nodeJSHome}/bin:${env.PATH}"
+def buildAndTest(installCommand, testCommand) {
+    // Ensure the Node.js installation is available
+    def nodeJSHome = tool 'NodeJS'
+    // Include Node.js binaries in the PATH
+    env.PATH = "${nodeJSHome}/bin:${env.PATH}"
 
-        // Run installCommand (npm install) and testCommand (npm run ...)
-        sh "${installCommand}"
-        sh "${testCommand}"
-    }
+    // Run installCommand (npm install) and testCommand (npm run ...)
+    sh installCommand
+    sh testCommand
 }
 
 pipeline {
@@ -20,14 +18,18 @@ pipeline {
             steps {
                 script {
                     // Run build and test steps based on branch
+                    def installCmd = 'npm install'
+                    def testCmd = ''
+
                     if (env.BRANCH_NAME == 'main') {
-                        buildAndTest('main', 'npm install cypress', 'npm run test')
+                        testCmd = 'npm run test'
                     } else if (env.BRANCH_NAME == 'branch1') {
-                        buildAndTest('branch1', 'npm install', 'npm run run:twotests')
+                        testCmd = 'npm run run:twotests'
                     } else if (env.BRANCH_NAME == 'branch2') {
-                        buildAndTest('branch2', 'npm install', 'npm run newTest')
+                        testCmd = 'npm run newTest'
                     }
-                    // Add more branches and build configurations as needed
+                    
+                    buildAndTest(installCmd, testCmd)
                 }
             }
         }
