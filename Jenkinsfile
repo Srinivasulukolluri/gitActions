@@ -39,7 +39,7 @@ pipeline {
         stage('Publish MochaAwesome Reports') {
             steps {
                 script {
-                    publishMochaAwesomeReports('/Users/srinivasulukolluri/Documents/cypressActions/cypress/reports/html') // Adjust the path accordingly
+                    publishMochaAwesomeReports('cypress/reports/html/**/*') // Adjust the path accordingly
                 }
             }
         }
