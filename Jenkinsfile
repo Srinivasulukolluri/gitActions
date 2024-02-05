@@ -14,6 +14,17 @@ def buildAndTest(buildName, installCommand, testCommand) {
     }
 }
 
+// Function to publish MochaAwesome reports
+def publishMochaAwesomeReports(reportPath) {
+    script {
+        // Archive the reports so they can be accessed later
+        archiveArtifacts "${reportPath}/**/*"
+
+        // Publish HTML reports
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
+    }
+}
+
 pipeline {
     agent any
 
@@ -37,22 +48,11 @@ pipeline {
         stage('Publish MochaAwesome Reports') {
             steps {
                 script {
-                    publishMochaAwesomeReports('build/**') // Adjust the path accordingly
+                    publishMochaAwesomeReports('build') // Adjust the path accordingly
                 }
             }
         }
 
         // Add more stages if necessary
-    }
-}
-
-// Function to publish MochaAwesome reports
-def publishMochaAwesomeReports(reportPath) {
-    script {
-        // Archive the reports so they can be accessed later
-        archiveArtifacts "${reportPath}/**/*"
-
-        // Publish HTML reports
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, includes: "${reportPath}/**/*.html", reportDir: reportPath, reportFiles: 'index.html'])
     }
 }
