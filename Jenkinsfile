@@ -48,7 +48,7 @@ pipeline {
         stage('Publish MochaAwesome Reports') {
             steps {
                 script {
-                    publishMochaAwesomeReports('build/**') // Adjust the path accordingly
+                    publishMochaAwesomeReports('$workspace/build/**') // Adjust the path accordingly
                 }
             }
         }
