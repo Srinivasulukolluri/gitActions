@@ -32,18 +32,17 @@ pipeline {
             }
         }
 
-    stage('Publish MochaAwesome Reports') {
-    steps {
-        script {
-            echo "Workspace contents:"
-            sh 'ls -R ${WORKSPACE}'
-            echo "Build directory contents:"
-            sh 'ls -R ${WORKSPACE}/build'
-            publishMochaAwesomeReports('build')
+        stage('Publish MochaAwesome Reports') {
+            steps {
+                script {
+                    echo "Workspace contents:"
+                    sh 'ls -R ${WORKSPACE}'
+                    echo "Build directory contents:"
+                    sh 'ls -R ${WORKSPACE}/build'
+                    publishMochaAwesomeReports('build')
+                }
+            }
         }
-    }
-}
-
 
         // Add more stages if necessary
     }
