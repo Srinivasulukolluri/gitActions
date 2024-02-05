@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     // Run build and test steps based on branch
-                    def installCmd = 'npm install'
+                    def installCmd = 'npm install cypress'
                     def testCmd = ''
 
                     if (env.BRANCH_NAME == 'main') {
