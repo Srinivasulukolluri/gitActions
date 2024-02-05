@@ -28,8 +28,12 @@ pipeline {
                     } else if (env.BRANCH_NAME == 'branch2') {
                         testCmd = 'npm run newTest'
                     }
-                    
-                    buildAndTest(installCmd, testCmd)
+
+                    // Ensure the build directory exists
+                    dir("${WORKSPACE}/path/to/build") {
+                        // Run build and test steps
+                        buildAndTest(installCmd, testCmd)
+                    }
                 }
             }
         }
