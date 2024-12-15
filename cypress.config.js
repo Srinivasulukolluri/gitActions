@@ -10,6 +10,9 @@ module.exports = defineConfig({
   //   embeddedScreenshots: true,
   //   inlineAssets: true,
   //   saveAllAttempts: false,
+  overwrite: false,
+  html: true,
+  json: true,
   
   failOnStatusCode: false,
   

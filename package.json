@@ -12,6 +12,13 @@
     "chrome":"cypress run --browser chrome",
     "newTest":"npx cypress run --spec cypress/e2e/Branch_Tests/secondbrach.cy.js --browser chrome"
   },
+  
+    "reporter": "spec",
+    "reporterOptions": {
+      "outputRoot": "output",
+      "mochaFile": "results/my-test-output.xml",
+      "toConsole": true
+    },
   "author": "Srinivas",
   "license": "ISC",
   "devDependencies": {
